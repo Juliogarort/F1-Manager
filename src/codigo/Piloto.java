@@ -2,13 +2,14 @@ package codigo;
 
 public class Piloto {
 
+	// Atributos
 	private String nombre;
 	
 	private String nacionalidad;
 	
 	private String fecha_nacimiento;
 	
-	
+	//Constructor
 	public Piloto(String nombre, String nacionalidad, String fecha_nacimiento) {
 		
 		this.nombre = nombre;

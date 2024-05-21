@@ -2,13 +2,14 @@ package codigo;
 
 public class Coche {
 
+	// Atributos
 	private String modelo;
 	
 	private String fabricante;
 	
 	private int año_fabricacion;
 	
-	
+	//Constructor
 	public Coche(String modelo, String fabricante, int año_fabricacion) {
 		
 		this.modelo = modelo;

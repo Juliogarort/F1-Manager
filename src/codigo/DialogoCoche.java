@@ -17,32 +17,38 @@ import javax.swing.border.EmptyBorder;
 
 public class DialogoCoche extends JDialog {
 
+	// Panel que contendrá el contenido principal del dialogo
     private final JPanel contentPanel = new JPanel();
-
+    
     public DialogoCoche() throws SQLException {
+    	
         setTitle("Consulta de Coches"); 
 
     	getContentPane().setBackground(new Color(21, 21, 31));
 
+    	// Icono de la ventana
         ImageIcon icono = new ImageIcon(getClass().getResource("/imagenes/LogoF1Manager.png"));
         setIconImage(icono.getImage());
 
+        // Establecer las dimensiones y posicion de la ventana
         setBounds(100, 100, 608, 360);
         setLocationRelativeTo(null);
         getContentPane().setLayout(null);
 
-        
+        // Configuración del panel de contenido
         contentPanel.setLayout(new FlowLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         
+        // JScrollPane para permitir el desplazamiento
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(10, 10, 574, 190);
         getContentPane().add(scrollPane);
         
+        // TextArea para mostrar los datos
         JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        scrollPane.setViewportView(textArea);
+        textArea.setEditable(false); // Textarea no editable
+        scrollPane.setViewportView(textArea); // Añadir el jtextarea al JScrollPane
         
         
         // Llamar al método para cargar los datos en el JLabel

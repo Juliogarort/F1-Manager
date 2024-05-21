@@ -2,6 +2,7 @@ package codigo;
 
 public class Pistas {
 
+	// Atributos
 	private String nombre;
 	
 	private String pais;
@@ -10,6 +11,7 @@ public class Pistas {
 	
 	private String record_vuelta;
 	
+	//Constructor
 	public Pistas(String nombre, String pais, float longitud_km, String record_vuelta) {
 		super();
 		this.nombre = nombre;

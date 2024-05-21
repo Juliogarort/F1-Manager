@@ -2,10 +2,7 @@ package codigo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.sql.SQLException;
 
 public class VentanaSecundaria extends JDialog implements ActionListener {
@@ -15,6 +12,7 @@ public class VentanaSecundaria extends JDialog implements ActionListener {
     private JPasswordField passwordField;
     private Principal principal;
 
+    // Constructor
     public VentanaSecundaria(Principal principal) {
         super(principal, true);
         this.principal = principal;
@@ -22,12 +20,12 @@ public class VentanaSecundaria extends JDialog implements ActionListener {
         // Centrar el JDialog en la pantalla
         setLocationRelativeTo(null);
 
-        // Establecer el tamaño y otras propiedades
+        // Establecer el tamaño y otras propiedades del JDialog
         getContentPane().setBackground(new Color(21, 21, 31));
         getContentPane().setLayout(null);
         setBounds(540, 150, 460, 520);
 
-
+        // Configurar etiqueta y campo de texto para el nombre de usuario
         JLabel label1_1 = new JLabel("Nombre de Usuario");
         label1_1.setForeground(new Color(255, 255, 255));
         label1_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -40,6 +38,7 @@ public class VentanaSecundaria extends JDialog implements ActionListener {
         getContentPane().add(TF_nombre);
         TF_nombre.setColumns(10);
 
+        // Configurar etiqueta y campo de texto para la contraseña
         JLabel label1 = new JLabel("Contraseña");
         label1.setForeground(new Color(255, 255, 255));
         label1.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -51,25 +50,24 @@ public class VentanaSecundaria extends JDialog implements ActionListener {
         passwordField.setBounds(115, 202, 200, 30);
         getContentPane().add(passwordField);
 
+        // Configurar botón de inicio de sesión
         boton2 = new JButton("Iniciar");
         boton2.setBounds(115, 349, 200, 40);
         getContentPane().add(boton2);
+        boton2.addActionListener(this);
 
+        // Configurar etiqueta para la imagen de fondo
         JLabel lblNewLabel = new JLabel("Foto");
         lblNewLabel.setBounds(115, 242, 200, 97);
         getContentPane().add(lblNewLabel);
-        boton2.addActionListener(this);
 
-        // Cargar la imagen para el JButton
+        // Cargar y escalar la imagen
         ImageIcon imageIcon1 = new ImageIcon(getClass().getResource("/imagenes/f1logo.png")); // Modifica la ruta según corresponda
-        // Escalar la imagen al tamaño del JButton
         Image image = imageIcon1.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH);
-        // Crear un nuevo ImageIcon con la imagen escalada
         ImageIcon scaledImageIcon = new ImageIcon(image);
-        // Establecer el ImageIcon en el JButton
         lblNewLabel.setIcon(scaledImageIcon);
 
-        // Agregar KeyListener al campo de texto de la contraseña
+        // Agregar KeyListener al campo de texto de la contraseña para permitir el inicio de sesión con Enter
         passwordField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -80,6 +78,7 @@ public class VentanaSecundaria extends JDialog implements ActionListener {
         });
     }
 
+    // Método para manejar el inicio de sesión o registro de usuarios
     private void saveUser() {
         String nombre = TF_nombre.getText();
         String contrasena = new String(passwordField.getPassword());
@@ -114,6 +113,7 @@ public class VentanaSecundaria extends JDialog implements ActionListener {
         dispose();
     }
 
+    // Método para manejar eventos de acción
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == boton2) {

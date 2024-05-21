@@ -17,7 +17,9 @@ public class ConexionUsuario {
 		Connection conexion = null;
 
 		try {
+			// Cargar el driver
 			Class.forName(DRIVER);
+			// Conexion con la bbdd
 			conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
 			System.out.println("Conexi�n OK");
 
@@ -33,7 +35,7 @@ public class ConexionUsuario {
 		return conexion;
 	}
 
-
+	// Metodo para obtener los datos de pilotos de la bbdd
 	public List<Piloto> getDataPilotos() throws SQLException {
 	    List<Piloto> listaPilotos = new ArrayList<>();
 	    Connection conexion = conectar();
@@ -73,7 +75,7 @@ public class ConexionUsuario {
 	    }
 	    return listaPilotos;
 	}
-	
+	// Metodo para obtener los datos de coches de la bbdd
 	public List<Coche> getDataCoches() throws SQLException {
 	    List<Coche> listaCoches = new ArrayList<>();
 	    Connection conexion = conectar();
@@ -114,7 +116,7 @@ public class ConexionUsuario {
 	    return listaCoches;
 	}
 
-	
+    // Método para obtener los datos de las pistas de la base de datos
 	public List<Pistas> getDataPistas() throws SQLException {
 	    List<Pistas> listaPistas = new ArrayList<>();
 	    Connection conexion = conectar();
@@ -155,7 +157,7 @@ public class ConexionUsuario {
 	    return listaPistas;
 	}
 
-	
+    // Método para insertar datos en la base de datos
 	public void insertData() throws SQLException{
         Connection conexion = conectar();
         
@@ -178,6 +180,7 @@ public class ConexionUsuario {
             }
     }
 	
+    // Método para eliminar datos de la base de datos
 	public void deleteData() throws SQLException {
 	    Connection conexion = conectar();
 	    
@@ -200,7 +203,7 @@ public class ConexionUsuario {
 	    }
 	}
 
-
+    // Método para actualizar datos en la base de datos
     public void updateData() throws SQLException {
         Connection conexion = conectar();
         
@@ -225,7 +228,7 @@ public class ConexionUsuario {
     
     
 	
-
+    // Método para agregar un nuevo usuario a la base de datos
 	public void addUser(String name, String email) throws SQLException {
         Connection conexion = conectar();
         Statement statement = conexion.createStatement();
@@ -234,6 +237,7 @@ public class ConexionUsuario {
         statement.close();
     }
 	
+	//Cerrar la conexion con la bbdd
 	public void cerrarConexion(Connection conection){
 		try {
 			//Cierre de la conexión
